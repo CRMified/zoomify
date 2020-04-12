@@ -37,12 +37,17 @@ module Zoomify
         end
       end
       def headers
-        exp = (Time.now.to_i + (4*3600))
+        #exp = (Time.now.to_i + (4*3600))
         iss_payload = {
             iss: Zoomify.api_key,
-            exp: exp
+            exp: 1.week.from_now
         }
-        token = JWT.encode iss_payload, Zoomify.api_secret, 'HS256'
+        
+        jwt = JSON::JWT.new iss_payload
+        jwt.alg = :RS256
+        token = jwt.sign(Zoomify.api_secret).to_s
+        
+        #token = JWT.encode iss_payload, Zoomify.api_secret, 'HS256'
         {
             'Accept' => 'application/json',
             'Content-Type' => 'application/json',
