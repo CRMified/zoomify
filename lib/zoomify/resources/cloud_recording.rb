@@ -7,7 +7,7 @@ module Zoomify
         self.class.fire_get("/accounts/me/recordings", params)
       end
       def account_cloud_recordings *args
-        params = Request.extract_params args *args
+        params = Request.extract_params args
         Request.raise_from_to_error params
         self.class.fire_get("/accounts/me/recordings", params)
       end
