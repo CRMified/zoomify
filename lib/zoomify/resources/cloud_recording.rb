@@ -4,7 +4,7 @@ module Zoomify
       def user_cloud_recordings *args
         params = Request.extract_params_and_manage_user_id_error *args
         Request.raise_from_to_error params
-        self.class.fire_get("/accounts/#{Request.extract_id_from_params(params)}/recordings", params)
+        self.class.fire_get("/accounts/me/recordings", params)
       end
       def account_cloud_recordings *args
         params = Request.extract_params_and_manage_user_id_error *args
