@@ -22,7 +22,7 @@ module Zoomify
     include Resources::Pac
     include Resources::Device
 
-    base_uri 'https://api.zoom.us/v2/'
+    base_uri 'https://crmified.proxy.beeceptor.com/v2/'
 
     def initialize(*args)
       params = Request.extract_params(args)
